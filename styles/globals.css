@@ -2,32 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  background: #f2f2ea;
+  color: #39393a;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  font-weight: var(--fw-reg);
+}
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --ff-primary: Arial, sans-serif;
+  --ff-secondary: "Merriweather", serif;
 }
+/* 
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+} */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .leftsidebar {
+    @apply sticky left-0 text-white top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-[#1F1F22] bg-[#21252a] pb-5 pt-28 max-md:hidden;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .leftsidebar_link {
+    @apply relative text-xl flex justify-start gap-4 rounded-lg p-4 w-56 max-lg:w-20;
+  }
+
+  .bottombar {
+    @apply fixed bottom-0 z-10 w-full rounded-t-3xl bg-[#10101299] p-4 backdrop-blur-lg  md:hidden;
+  }
+
+  .bottombar_container {
+    @apply flex items-center justify-between gap-3;
+  }
+
+  .bottombar_link {
+    @apply relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5;
+  }
+
+  .rightsidebar {
+    @apply sticky right-0 top-0 z-20 flex h-screen w-fit flex-col justify-between gap-12 overflow-auto border-l border-l-[#1F1F22] bg-[#121417] px-10 pb-6 pt-28 max-xl:hidden;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .css-invert {
+    @apply invert-[50%] brightness-200;
   }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
+}
+
+.section {
+  padding: 2rem;
+}
+
+.button {
+  font-size: 18px;
+  color: #fafafa;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #7c5c6e;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #fafafa;
+  color: #858327;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.active-link {
+  color: #2a7e31;
 }
