@@ -1,9 +1,12 @@
-import Homepage from "@/pages";
+import Layout from "./Components/Layout";
+import CheckInForm from "./Components/CheckInForm";
+import CheckOutForm from "./Components/CheckOutForm";
 
 export default function Home() {
   return (
-    <div>
-      <Homepage />
-    </div>
+    <Layout>
+      <CheckInForm />
+      <CheckOutForm />
+    </Layout>
   );
 }
